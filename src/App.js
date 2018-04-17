@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import NavBar from './Components/NavBar.js';
+import Footer from './Components/Footer.js';
 import { Route, Switch } from "react-router-dom";
 import './App.css';
 import Questions from './components/Questions'
@@ -31,7 +33,11 @@ class App extends Component {
   render() {
     
     return (
-    
+
+      <div>
+        <NavBar />
+        <p>este es mi contenido</p>
+        <Footer />
       <div className="App">
         <Switch>
           <Route component={Home} path="/" exact />
