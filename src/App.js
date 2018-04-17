@@ -1,18 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Route, Switch } from "react-router-dom";
 import './App.css';
+import Questions from './components/Questions'
+
+import Home from './components/Home'
 
 class App extends Component {
+
+    constructor(props){
+      super(props)
+      this.state = {
+        questions : ''
+      }
+    }
+    componentWillMount(){
+      // console.log(this.state)
+    }
+  
+    componentDidMount(){
+      fetch('https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple')
+        .then((response) => {
+          return response.json()
+        })
+        .then((response) => {
+          this.setState({questions: response.results}, function(){console.log(this.state.questions)})
+        })
+    }
+
+
   render() {
+    
     return (
+    
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Switch>
+          <Route component={Home} path="/" exact />
+          <Route component={Questions} path="/questions" />
+        </Switch>
       </div>
     );
   }
