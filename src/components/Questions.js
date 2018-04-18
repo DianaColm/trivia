@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router'
 
 
 class Questions extends Component {
@@ -10,9 +11,13 @@ class Questions extends Component {
             counter: 0
         }
         this.handleClick = this.handleClick.bind(this);
+        this.showResults = this.showResults.bind(this)
     }
 
-
+    showResults(results){
+        localStorage.setItem('results', results);
+    
+    }
 
     handleClick(event){
         event.target.parentElement.style.display = 'none'
@@ -27,7 +32,7 @@ class Questions extends Component {
             newResults.push('correct')
             this.setState({counter: this.state.counter + 1})
         }
-        this.setState({results: newResults})
+        this.setState({results: newResults}, ()=>{if(this.state.results.length === 5){this.showResults(this.state.results)}})
     }
 
 
@@ -47,6 +52,9 @@ class Questions extends Component {
             })
         }
     render(){
+        if(this.state.results.length === 5){
+            return <Redirect to='/results'/>;
+        }
         if(this.state.questions.length > 0){
             return(
                 <div>
