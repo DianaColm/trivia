@@ -4,7 +4,7 @@ import NavBar from './components/NavBar.js';
 import { Route, Switch } from "react-router-dom";
 import './App.css';
 import Questions from './components/Questions'
-
+import Results from'./components/Results'
 import Home from './components/Home'
 
 class App extends Component {
@@ -19,6 +19,7 @@ class App extends Component {
         <Switch>
           <Route component={Home} path="/" exact />
           <Route component={Questions} path="/questions" />
+          <Route component={Results} path="/results" />
         </Switch>
       </div>
       <Footer />
