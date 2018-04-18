@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import './Footer.css'
 
 class Footer extends Component {
   render() {
     return (
-      <div>
-        <div className="card-footer text-muted text-center">
-          Este es mi Footer
+      <div className="footer text-center">
+        <div className="container">
+          <span className="text-muted">Home About Settings</span>
         </div>
       </div>
     );

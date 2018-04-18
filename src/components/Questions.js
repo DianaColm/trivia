@@ -12,15 +12,17 @@ class Questions extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-   
+
 
     handleClick(event){
         event.target.parentElement.style.display = 'none'
         let newResults = [...this.state.results]
+        // console.log(event.target.innerText, correct)
+
         let selectedAnswer = event.target.innerText
         if(this.state.correct_answer.indexOf(selectedAnswer) === -1){
             newResults.push('incorrect')
-            
+
         } else {
             newResults.push('correct')
             this.setState({counter: this.state.counter + 1})
@@ -47,7 +49,10 @@ class Questions extends Component {
     render(){
         if(this.state.questions.length > 0){
             return(
-                <div>   
+                <div>
+                <h3>Seleccion la respuesta correcta</h3>
+                <br/>
+                <br/>
                     {this.state.questions.map((item, i) => {
                         let answerArray = [...item.incorrect_answers, item.correct_answer]
                         function shuffle( arr ){
@@ -57,17 +62,17 @@ class Questions extends Component {
                         let sortedAnswer = shuffle( answerArray ) ;
                         // console.log(sortedAnswer)
                         return <div key={i}>
-                            <h4>{item.question}</h4>
-                            <button onClick={this.handleClick}>{sortedAnswer[0]}</button>
-                            <button onClick={this.handleClick}>{sortedAnswer[1]}</button>
-                            <button onClick={this.handleClick}>{sortedAnswer[2]}</button>
-                            <button onClick={this.handleClick}>{sortedAnswer[3]}</button>
+                            <h5>{item.question}</h5>
+                            <button className="btn btn-secondary btn-sm" onClick={this.handleClick}>{ sortedAnswer[0]}</button>
+                            <button className="btn btn-secondary btn-sm" onClick={this.handleClick}>{ sortedAnswer[1]}</button>
+                            <button className="btn btn-secondary btn-sm" onClick={this.handleClick}>{ sortedAnswer[2]}</button>
+                            <button className="btn btn-secondary btn-sm" onClick={this.handleClick}>{ sortedAnswer[3]}</button>
 
                         </div>
                     })}
 
                     <p>Respuestas Correctas: {this.state.counter}</p>
-                    
+
                 </div>
             )
 
@@ -75,7 +80,7 @@ class Questions extends Component {
             return <div>Cargando...</div>
 
         }
-    
+
     }
 }
 
