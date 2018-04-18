@@ -12,25 +12,22 @@ class Questions extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-   
+
 
     handleClick(event){
         event.target.parentElement.style.display = 'none'
         let newResults = [...this.state.results]
-<<<<<<< HEAD
-        console.log(event.target.innerText, correct)
+        // console.log(event.target.innerText, correct)
 
-=======
         let selectedAnswer = event.target.innerText
         if(this.state.correct_answer.indexOf(selectedAnswer) === -1){
             newResults.push('incorrect')
-            
+
         } else {
             newResults.push('correct')
             this.setState({counter: this.state.counter + 1})
         }
         this.setState({results: newResults})
->>>>>>> 4fefcca19ca8938c12f68adf72fd04023e7e1e01
     }
 
 
@@ -75,7 +72,7 @@ class Questions extends Component {
                     })}
 
                     <p>Respuestas Correctas: {this.state.counter}</p>
-                    
+
                 </div>
             )
 
