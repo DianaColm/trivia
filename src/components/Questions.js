@@ -1,21 +1,39 @@
 import React, { Component } from 'react';
 
+
 class Questions extends Component {
     constructor(){
         super();
         this.state= {
             questions: [],
-            results: []
+            results: [],
+            counter: 0
         }
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(event, correct){
+   
+
+    handleClick(event){
         event.target.parentElement.style.display = 'none'
         let newResults = [...this.state.results]
+<<<<<<< HEAD
         console.log(event.target.innerText, correct)
 
+=======
+        let selectedAnswer = event.target.innerText
+        if(this.state.correct_answer.indexOf(selectedAnswer) === -1){
+            newResults.push('incorrect')
+            
+        } else {
+            newResults.push('correct')
+            this.setState({counter: this.state.counter + 1})
+        }
+        this.setState({results: newResults})
+>>>>>>> 4fefcca19ca8938c12f68adf72fd04023e7e1e01
     }
+
+
 
 
     componentDidMount(){
@@ -43,9 +61,9 @@ class Questions extends Component {
                         function shuffle( arr ){
                             return arr.sort( () => Math.random() - 0.5 );
                             }
-                        console.log(answerArray)
+                        // console.log(answerArray)
                         let sortedAnswer = shuffle( answerArray ) ;
-                        console.log(sortedAnswer)
+                        // console.log(sortedAnswer)
                         return <div key={i}>
                             <h5>{item.question}</h5>
                             <button className="btn btn-secondary btn-sm" onClick={this.handleClick}>{ sortedAnswer[0]}</button>
@@ -55,6 +73,9 @@ class Questions extends Component {
 
                         </div>
                     })}
+
+                    <p>Respuestas Correctas: {this.state.counter}</p>
+                    
                 </div>
             )
 
