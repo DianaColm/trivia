@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router'
+import './Footer.css'
 
 
 class Questions extends Component {
@@ -16,7 +17,7 @@ class Questions extends Component {
 
     showResults(results){
         localStorage.setItem('results', results);
-    
+
     }
 
     handleClick(event){
@@ -57,10 +58,9 @@ class Questions extends Component {
         }
         if(this.state.questions.length > 0){
             return(
-                <div>
-                <h3>Seleccion la respuesta correcta</h3>
-                <br/>
-                <br/>
+                <div className="margin-top text-center">
+                <span className="card-subtitle mb-2 text-muted text-center">Selecciona la respuesta correcta</span>
+
                     {this.state.questions.map((item, i) => {
                         let answerArray = [...item.incorrect_answers, item.correct_answer]
                         function shuffle( arr ){
@@ -69,12 +69,12 @@ class Questions extends Component {
                         // console.log(answerArray)
                         let sortedAnswer = shuffle( answerArray ) ;
                         // console.log(sortedAnswer)
-                        return <div key={i}>
-                            <h5>{item.question}</h5>
-                            <button className="btn btn-secondary btn-sm" onClick={this.handleClick}>{ sortedAnswer[0]}</button>
-                            <button className="btn btn-secondary btn-sm" onClick={this.handleClick}>{ sortedAnswer[1]}</button>
-                            <button className="btn btn-secondary btn-sm" onClick={this.handleClick}>{ sortedAnswer[2]}</button>
-                            <button className="btn btn-secondary btn-sm" onClick={this.handleClick}>{ sortedAnswer[3]}</button>
+                        return <div className="text-center" key={i}>
+                            <p className="Question text-center">{item.question}</p>
+                            <button className="btn btn-info btn-sm" onClick={this.handleClick}>{ sortedAnswer[0]}</button>
+                            <button className="btn btn-info btn-sm" onClick={this.handleClick}>{ sortedAnswer[1]}</button>
+                            <button className="btn btn-info btn-sm" onClick={this.handleClick}>{ sortedAnswer[2]}</button>
+                            <button className="btn btn-info btn-sm" onClick={this.handleClick}>{ sortedAnswer[3]}</button>
 
                         </div>
                     })}

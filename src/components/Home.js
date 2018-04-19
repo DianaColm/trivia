@@ -7,17 +7,19 @@ class Home extends Component {
         let imgStyle = {
             width: '200px',
             height: 'auto',
+            borderRadius: '90px',
             display: 'block',
-            margin: '0 auto'
+            margin: '50px auto',
         }
         return(
-            <div>
-                <h1>Bienvenido a trivia</h1>
+          <section className="jumbotron text-center">
+            <div className="container">
+              <h1 className="jumbotron-heading">Bienvenido a Trivia</h1>
                 <img style={imgStyle} src="http://www.maxprog.com/img/cat.jpg" />
-                <br/>
                 <br/>
                 <button type="button" className="btn btn-dark"><Link to="/questions">Comienza a jugar</Link></button>
             </div>
+          </section>
         )
     }
 }

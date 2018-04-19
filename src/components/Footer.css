@@ -6,3 +6,15 @@
   background-color: #343A40;
   color: white;
 }
+
+.btn{
+  margin: 10px 10px;
+}
+
+.Question {
+  font-weight: bold;
+}
+
+.margin-top{
+  margin: 10px 0;
+}
