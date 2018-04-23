@@ -1,7 +1,7 @@
-#Trivia
+##Trivia
 
 Tecnologías utilizadas: react, react-dom,framework de boostrap, webpack, npm, jsx, react-router,
-api,
+API, SPA.
 
 Descripción: Aplicación desarrollada para el entretenimiento de las personas.
 Esta app responsive es muy dinámica ya que te lanza un Random de preguntas
